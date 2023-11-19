@@ -25,9 +25,9 @@ pub fn Vec(comptime T: type) type {
             this.state.end = this.state.cap;
 
             const size = (@sizeOf(T) / @sizeOf(u8)) * this.state.cap;
-            const sliceAsU8 = @as([*:0]u8, @ptrCast(this.state.ptr))[0..size];
+            const asU8Slice = @as([*:0]u8, @ptrCast(this.state.ptr))[0..size];
 
-            @memset(sliceAsU8, 0);
+            @memset(asU8Slice, 0);
 
             return this;
         }
